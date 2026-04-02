@@ -10,7 +10,7 @@ public class Product {
     private BigDecimal standardPrice;
     private long quantity;
     private final ProductType productType;
-    private Map<String, List<Configuration>> availableConfigurationList;;
+    private Map<String, List<Configuration>> availableConfigurationList;
 
     public Product(long id, String name, BigDecimal standardPrice, long quantity, ProductType productType, Map<String, List<Configuration>> availableConfigurationList) {
         this.id = id;
@@ -47,6 +47,10 @@ public class Product {
 
     public void setQuantity(long quantity) {
         this.quantity = quantity;
+    }
+
+    public void reductionQuantity(long quantity) {
+        this.quantity -= quantity;
     }
 
     public void setStandardPrice(BigDecimal standardPrice) {

@@ -13,4 +13,15 @@ public class Cart {
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
+    public void addCartItem(CartItem cartItem) {
+        cartItemList.add(cartItem);
+    }
+
+    public List<CartItem> getCartItemList() {
+        return cartItemList;
+    }
+
+    public void clearCart() {
+        cartItemList.clear();
+    }
 }
