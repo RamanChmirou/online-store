@@ -6,10 +6,10 @@ import java.util.List;
 public class Product {
     private final long id;
     private final String name;
-    private final BigDecimal standardPrice;
+    private BigDecimal standardPrice;
     private long quantity;
     private final ProductType productType;
-    private final List<Configuration> standardConfigurationList;
+    private List<Configuration> standardConfigurationList;
 
     public Product(long id, String name, BigDecimal standardPrice, long quantity, ProductType productType, List<Configuration> standardConfigurationList) {
         this.id = id;
@@ -46,5 +46,13 @@ public class Product {
 
     public void setQuantity(long quantity) {
         this.quantity = quantity;
+    }
+
+    public void setStandardPrice(BigDecimal standardPrice) {
+        this.standardPrice = standardPrice;
+    }
+
+    public void setStandardConfigurationList(List<Configuration> standardConfigurationList) {
+        this.standardConfigurationList = standardConfigurationList;
     }
 }
