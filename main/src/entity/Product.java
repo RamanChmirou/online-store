@@ -10,9 +10,9 @@ public class Product {
     private BigDecimal standardPrice;
     private long quantity;
     private final ProductType productType;
-    private Map<String, List<Configuration>> availableConfigurationList;
+    private Map<ConfigurationCategory, List<Configuration>> availableConfigurationList;
 
-    public Product(long id, String name, BigDecimal standardPrice, long quantity, ProductType productType, Map<String, List<Configuration>> availableConfigurationList) {
+    public Product(long id, String name, BigDecimal standardPrice, long quantity, ProductType productType, Map<ConfigurationCategory, List<Configuration>> availableConfigurationList) {
         this.id = id;
         this.name = name;
         this.standardPrice = standardPrice;
@@ -41,7 +41,7 @@ public class Product {
         return productType;
     }
 
-    public Map<String, List<Configuration>> getAvailableConfigurationList() {
+    public Map<ConfigurationCategory, List<Configuration>> getAvailableConfigurationList() {
         return availableConfigurationList;
     }
 
@@ -57,7 +57,7 @@ public class Product {
         this.standardPrice = standardPrice;
     }
 
-    public void setAvailableConfigurationList(Map<String, List<Configuration>> availableConfigurationList) {
+    public void setAvailableConfigurationList(Map<ConfigurationCategory, List<Configuration>> availableConfigurationList) {
         this.availableConfigurationList = availableConfigurationList;
     }
 

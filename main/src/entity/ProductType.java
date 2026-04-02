@@ -1,9 +1,9 @@
 package entity;
 
 public enum ProductType {
-    Computer("Computer"),
-    Smartphone("Smartphone"),
-    Electronics("Electronics");
+    COMPUTER("Computer"),
+    SMARTPHONE("Smartphone"),
+    ELECTRONICS("Electronics");
 
     private final String name;
 
