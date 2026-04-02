@@ -2,6 +2,7 @@ package entity;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 public class Product {
     private final long id;
@@ -9,15 +10,15 @@ public class Product {
     private BigDecimal standardPrice;
     private long quantity;
     private final ProductType productType;
-    private List<Configuration> standardConfigurationList;
+    private Map<String, List<Configuration>> availableConfigurationList;;
 
-    public Product(long id, String name, BigDecimal standardPrice, long quantity, ProductType productType, List<Configuration> standardConfigurationList) {
+    public Product(long id, String name, BigDecimal standardPrice, long quantity, ProductType productType, Map<String, List<Configuration>> availableConfigurationList) {
         this.id = id;
         this.name = name;
         this.standardPrice = standardPrice;
         this.quantity = quantity;
         this.productType = productType;
-        this.standardConfigurationList = standardConfigurationList;
+        this.availableConfigurationList = availableConfigurationList;
     }
 
     public long getId() {
@@ -40,8 +41,8 @@ public class Product {
         return productType;
     }
 
-    public List<Configuration> getStandardConfigurationList() {
-        return standardConfigurationList;
+    public Map<String, List<Configuration>> getAvailableConfigurationList() {
+        return availableConfigurationList;
     }
 
     public void setQuantity(long quantity) {
@@ -52,7 +53,13 @@ public class Product {
         this.standardPrice = standardPrice;
     }
 
-    public void setStandardConfigurationList(List<Configuration> standardConfigurationList) {
-        this.standardConfigurationList = standardConfigurationList;
+    public void setAvailableConfigurationList(Map<String, List<Configuration>> availableConfigurationList) {
+        this.availableConfigurationList = availableConfigurationList;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Product | id: %d, name: %s, standardPrice: %s, quantity: %d, productType %s, ",
+                id, name, standardPrice, quantity, productType.getName());
     }
 }

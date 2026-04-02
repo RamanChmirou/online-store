@@ -32,7 +32,7 @@ public class ProductService {
                 .orElseThrow(() -> new ProductDoesNotExistsException("Tego produktu nie istnieje."));
         product.setQuantity(newProduct.getQuantity());
         product.setStandardPrice(newProduct.getStandardPrice());
-        product.setStandardConfigurationList(newProduct.getStandardConfigurationList());
+        product.setAvailableConfigurationList(newProduct.getAvailableConfigurationList());
     }
 
     public void delete(long id) {

@@ -1,7 +1,17 @@
 package entity;
 
 public enum ProductType {
-    Computer,
-    Smartphone,
-    Electronics
+    Computer("Computer"),
+    Smartphone("Smartphone"),
+    Electronics("Electronics");
+
+    private final String name;
+
+    ProductType(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

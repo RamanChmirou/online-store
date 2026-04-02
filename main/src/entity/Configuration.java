@@ -4,10 +4,10 @@ import java.math.BigDecimal;
 
 public class Configuration {
     private final String name;
-    private final int value;
+    private final String value;
     private final BigDecimal price;
 
-    public Configuration(String name, int value, BigDecimal price) {
+    public Configuration(String name, String value, BigDecimal price) {
         this.name = name;
         this.value = value;
         this.price = price;
@@ -21,7 +21,12 @@ public class Configuration {
         return price;
     }
 
-    public int getValue() {
+    public String getValue() {
         return value;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s %s", name, value);
     }
 }
