@@ -4,21 +4,26 @@ import entity.Cart;
 import entity.CartItem;
 import entity.Order;
 import exception.EmptyCartException;
+import repository.OrderRepository;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 public class OrderService {
     private final List<Order> orderList = new ArrayList<>();
+    private final OrderRepository orderRepository;
+
+    public OrderService(OrderRepository orderRepository) {
+        this.orderRepository = orderRepository;
+    }
 
     public void processOrder(Cart cart, String userName) {
         if (cart.getCartItemList().isEmpty()) {
             throw new EmptyCartException("Pusty koszyk.");
         }
-        BigDecimal totalPrice = cart.calculateTotalPrice();
         Order order = new Order(userName, cart.getCartItemList());
         orderList.add(order);
+        orderRepository.save(order);
         cart.clearCart();
     }
 

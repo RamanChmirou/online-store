@@ -2,21 +2,20 @@ package entity;
 
 import java.math.BigDecimal;
 import java.time.Instant;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
 public class Order {
     private final String id;
     private final String userName;
-    private final LocalDateTime orderDate;
+    private final Instant orderDate;
     private final List<CartItem> orderedItems;
     private final BigDecimal totalPrice;
 
     public Order(String userName, List<CartItem> orderedItems) {
         this.id = UUID.randomUUID().toString();
         this.userName = userName;
-        this.orderDate = LocalDateTime.from(Instant.now());
+        this.orderDate = Instant.now();
         this.orderedItems = List.copyOf(orderedItems);
         this.totalPrice = calculateTotalPrice();
     }
@@ -35,7 +34,7 @@ public class Order {
         return userName;
     }
 
-    public LocalDateTime getOrderDate() {
+    public Instant getOrderDate() {
         return orderDate;
     }
 
