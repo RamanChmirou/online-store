@@ -8,6 +8,7 @@ import repository.OrderRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public class OrderService {
     private final List<Order> orderList = new ArrayList<>();
@@ -23,7 +24,7 @@ public class OrderService {
         }
         Order order = new Order(userName, cart.getCartItemList());
         orderList.add(order);
-        orderRepository.save(order);
+        CompletableFuture.runAsync(() -> orderRepository.save(order));
         cart.clearCart();
     }
 
