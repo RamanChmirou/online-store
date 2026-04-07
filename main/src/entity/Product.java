@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Reprezentuje produkt, przechuwuje informacje o dostępnych konfiguracjach
+ */
 public class Product {
     private final long id;
     private final String name;
@@ -63,7 +66,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return String.format("Product | id: %d, name: %s, standardPrice: %s, quantity: %d, productType %s, ",
+        return String.format("Produkt | id: %d, nazwa: %s, standardowa cena: %s, ilość: %d, typ produktu: %s%n",
                 id, name, standardPrice, quantity, productType.getName());
     }
 }

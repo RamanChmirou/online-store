@@ -10,6 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * Serwis do zarządzania zamówieniami
+ * Do konstruktora należy przekazać object OrderRepository
+ */
 public class OrderService {
     private final List<Order> orderList = new ArrayList<>();
     private final OrderRepository orderRepository;
@@ -18,7 +22,14 @@ public class OrderService {
         this.orderRepository = orderRepository;
     }
 
-    public void processOrder(Cart cart, String userName) {
+    /**
+     * Tworzy zamówienie, dodaje do listy i czysci koszyk asynchrinicznie
+     * Zapisuje zamówienie do pliku synchronicznie
+     * @param cart Koszyk klienta
+     * @param userName Imię klienta
+     * @return Stworzone zomówienie
+     */
+    public Order processOrder(Cart cart, String userName) {
         if (cart.getCartItemList().isEmpty()) {
             throw new EmptyCartException("Pusty koszyk.");
         }
@@ -26,9 +37,14 @@ public class OrderService {
         orderList.add(order);
         CompletableFuture.runAsync(() -> orderRepository.save(order));
         cart.clearCart();
+        return order;
     }
 
-    public String generateInvoice(Order order) {
+    /**
+     * Generuje i pokazuje fakturę klientowi
+     * @param order Zamówinie
+     */
+    public void generateInvoice(Order order) {
         StringBuilder invoice = new StringBuilder();
         invoice.append("Factura").append("\n");
         invoice.append("Nr zamówienia: ").append(order.getId()).append("\n");
@@ -40,6 +56,6 @@ public class OrderService {
                     .append(" - ").append(cartItem.getPrice()).append(" PLN\n");
         }
         invoice.append("DO ZAPŁATY: ").append(order.getTotalPrice()).append(" PLN\n");
-        return invoice.toString();
+        System.out.println((invoice));
     }
 }

@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Serwis do CRUD operacji nad produktami
+ * Oprócz CRUD operacji zawiera 2 metody do fyszukiwania(po imieniu i po id)
+ */
 public class ProductService {
     private final List<Product> productList = new ArrayList<>();
 
@@ -17,6 +21,12 @@ public class ProductService {
     public Optional<Product> findById(long id) {
         return productList.stream()
                 .filter(product -> product.getId() == id)
+                .findFirst();
+    }
+
+    public Optional<Product> findByName(String name) {
+        return productList.stream()
+                .filter(product -> product.getName().equals(name))
                 .findFirst();
     }
 

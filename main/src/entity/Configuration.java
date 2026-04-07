@@ -27,6 +27,6 @@ public class Configuration {
 
     @Override
     public String toString() {
-        return String.format("%s %s", name, value);
+        return String.format("Configuracja | nazwa: %s, wartość: %s, plus do ceny %s%n", name, value, price);
     }
 }

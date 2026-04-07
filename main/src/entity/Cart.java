@@ -6,6 +6,9 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Reprezentuje koszyk, przechowuje informacje o zniżce
+ */
 public class Cart {
     private final List<CartItem> cartItemList = new ArrayList<>();
     private Discount discount = null;
@@ -16,6 +19,10 @@ public class Cart {
         this.discount = discount;
     }
 
+    /**
+     *  Metoda która wywołuje się na objekcie koszyka dla obliczenia sumy elementów z uwzględnieniem zniżki
+     * @return Kwota do zapłaty
+     */
     public BigDecimal calculateTotalPrice() {
         BigDecimal totalPrice = cartItemList.stream()
                 .map(cartItem -> cartItem.getPrice().multiply(BigDecimal.valueOf(cartItem.getQuantity())))
@@ -36,5 +43,9 @@ public class Cart {
 
     public void clearCart() {
         cartItemList.clear();
+    }
+
+    public void setDiscount(Discount discount) {
+        this.discount = discount;
     }
 }

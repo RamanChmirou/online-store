@@ -4,13 +4,16 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Reprezentuje element koszyka z wybraną konfiguracją
+ */
 public class CartItem {
     private final Product product;
-    private int quantity;
+    private long quantity;
     private final List<Configuration> configurationList;
     private final BigDecimal price;
 
-    public CartItem(Product product, int quantity, List<Configuration> configurationList) {
+    public CartItem(Product product, long quantity, List<Configuration> configurationList) {
         this.product = product;
         this.quantity = quantity;
         this.configurationList = configurationList;
@@ -23,7 +26,7 @@ public class CartItem {
         return product;
     }
 
-    public int getQuantity() {
+    public long getQuantity() {
         return quantity;
     }
 
@@ -44,7 +47,7 @@ public class CartItem {
         String configurations = configurationList.stream()
                 .map(Configuration::toString)
                 .collect(Collectors.joining(","));
-        return String.format("CartItem | product name: %s(%s), quantity %d, price: %s",
+        return String.format("Element koszyka | nazwa: %s(%s), ilość %d, cena: %s%n",
                 product.getName(), configurations, quantity, price);
     }
 }
