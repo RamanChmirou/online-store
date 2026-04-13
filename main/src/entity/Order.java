@@ -2,6 +2,8 @@ package entity;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,18 +14,19 @@ public class Order {
     private final List<CartItem> orderedItems;
     private final BigDecimal totalPrice;
 
-    public Order(String userName, List<CartItem> orderedItems) {
+    public Order(String userName, List<CartItem> orderedItems, BigDecimal totalPrice) {
         this.id = UUID.randomUUID().toString();
         this.userName = userName;
         this.orderDate = Instant.now();
         this.orderedItems = List.copyOf(orderedItems);
-        this.totalPrice = calculateTotalPrice();
+        this.totalPrice = totalPrice;
     }
 
-    public BigDecimal calculateTotalPrice() {
-        return orderedItems.stream()
-                .map(cartItem -> cartItem.getPrice().multiply(BigDecimal.valueOf(cartItem.getQuantity())))
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+    public String getFormatedDate() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")
+                .withZone(ZoneId.systemDefault());
+        return formatter.format(this.orderDate);
     }
 
     public String getId() {

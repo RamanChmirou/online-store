@@ -33,7 +33,7 @@ public class OrderService {
         if (cart.getCartItemList().isEmpty()) {
             throw new EmptyCartException("Pusty koszyk.");
         }
-        Order order = new Order(userName, cart.getCartItemList());
+        Order order = new Order(userName, cart.getCartItemList(), cart.calculateTotalPrice());
         orderList.add(order);
         CompletableFuture.runAsync(() -> orderRepository.save(order));
         cart.clearCart();

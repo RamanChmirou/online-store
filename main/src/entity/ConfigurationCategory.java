@@ -1,10 +1,10 @@
 package entity;
 
 public enum ConfigurationCategory {
-    PROCESSOR("Processor"),
+    PROCESSOR("Procesor"),
     RAM("RAM"),
-    COLOR("Color"),
-    ACCESSORIES("Accessories");
+    COLOR("Kolor"),
+    ACCESSORIES("Dodatki");
 
     private final String name;
 
