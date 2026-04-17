@@ -1,6 +1,6 @@
 package repository;
 
-import entity.Order;
+import model.Order;
 
 import java.io.IOException;
 import java.nio.file.Files;

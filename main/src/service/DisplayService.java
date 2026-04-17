@@ -1,10 +1,10 @@
 package service;
 
-import entity.Cart;
-import entity.CartItem;
-import entity.Configuration;
-import entity.ConfigurationCategory;
-import entity.Product;
+import model.Cart;
+import model.CartItem;
+import model.Configuration;
+import model.ConfigurationCategory;
+import model.Product;
 
 import java.util.List;
 import java.util.Scanner;

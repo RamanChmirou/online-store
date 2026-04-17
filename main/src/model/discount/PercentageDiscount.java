@@ -1,4 +1,4 @@
-package entity.discount;
+package model.discount;
 
 import java.math.BigDecimal;
 

@@ -1,6 +1,6 @@
-package entity;
+package model;
 
-import entity.discount.Discount;
+import model.discount.Discount;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

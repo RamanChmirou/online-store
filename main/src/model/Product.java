@@ -1,4 +1,4 @@
-package entity;
+package model;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -52,7 +52,7 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public void reductionQuantity(long quantity) {
+    public synchronized void reductionQuantity(long quantity) {
         this.quantity -= quantity;
     }
 

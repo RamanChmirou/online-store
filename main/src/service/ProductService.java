@@ -1,6 +1,6 @@
 package service;
 
-import entity.Product;
+import model.Product;
 import exception.ProductDoesNotExistsException;
 
 import java.util.ArrayList;

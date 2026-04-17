@@ -1,8 +1,8 @@
 package service;
 
-import entity.Cart;
-import entity.CartItem;
-import entity.Product;
+import model.Cart;
+import model.CartItem;
+import model.Product;
 import exception.InsufficientStockException;
 import exception.ProductDoesNotExistsException;
 

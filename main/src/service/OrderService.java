@@ -1,8 +1,8 @@
 package service;
 
-import entity.Cart;
-import entity.CartItem;
-import entity.Order;
+import model.Cart;
+import model.CartItem;
+import model.Order;
 import exception.EmptyCartException;
 import repository.OrderRepository;
 

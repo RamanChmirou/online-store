@@ -1,10 +1,12 @@
 package controller;
 
-import entity.Configuration;
-import entity.ConfigurationCategory;
-import entity.Order;
-import entity.Product;
+import model.Configuration;
+import model.ConfigurationCategory;
+import model.Order;
+import model.Product;
+import repository.OrderRepository;
 import service.DisplayService;
+import service.ProductService;
 import service.StoreService;
 
 import java.util.ArrayList;
@@ -15,8 +17,12 @@ import java.util.List;
  * między interfejsem użytkownika (DisplayService) a logiką biznesową (StoreService).
  */
 public class StoreController {
-    private final StoreService storeService = new StoreService();
+    private final StoreService storeService;
     private final DisplayService displayService = new DisplayService();
+
+    public StoreController(OrderRepository orderRepository, ProductService productService) {
+        this.storeService = new StoreService(orderRepository, productService);
+    }
 
     public void start() {
         storeService.addTestData();
