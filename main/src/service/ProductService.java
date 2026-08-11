@@ -1,0 +1,54 @@
+package service;
+
+import model.Product;
+import exception.ProductDoesNotExistsException;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+/**
+ * Serwis do CRUD operacji nad produktami
+ * Oprócz CRUD operacji zawiera 2 metody do fyszukiwania(po imieniu i po id)
+ */
+public class ProductService {
+    private final List<Product> productList = new ArrayList<>();
+
+    public List<Product> findAll() {
+        return productList;
+    }
+
+    public Optional<Product> findById(long id) {
+        return productList.stream()
+                .filter(product -> product.getId() == id)
+                .findFirst();
+    }
+
+    public Optional<Product> findByName(String name) {
+        return productList.stream()
+                .filter(product -> product.getName().equals(name))
+                .findFirst();
+    }
+
+    public void create(Product product) {
+        if (findById(product.getId()).isPresent()) {
+            throw new ProductDoesNotExistsException("Ten produkt już istnieje.");
+        }
+        productList.add(product);
+    }
+
+    public void update(long id, Product newProduct) {
+        Product product = findById(id)
+                .orElseThrow(() -> new ProductDoesNotExistsException("Tego produktu nie istnieje."));
+        product.setQuantity(newProduct.getQuantity());
+        product.setStandardPrice(newProduct.getStandardPrice());
+        product.setAvailableConfigurationList(newProduct.getAvailableConfigurationList());
+    }
+
+    public void delete(long id) {
+        if (findById(id).isEmpty()) {
+            throw new ProductDoesNotExistsException("Tego produktu nie istnieje.");
+        }
+        productList.removeIf(product -> product.getId() == id);
+    }
+}
